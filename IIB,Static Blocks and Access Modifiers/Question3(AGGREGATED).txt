@@ -1,0 +1,33 @@
+package Question3;
+
+public class Aggregated {
+
+    String Student_name;
+    int Student_id;
+    String Student_address;
+    Aggregation agx;
+
+
+    public void display(String Student_name, int Student_id, String Student_address,
+                        Aggregation agx)
+    {
+        System.out.println("Student Name: " + Student_name);
+        System.out.println("Student ID: " + Student_id);
+        System.out.println("Student Address: " + Student_address);
+        System.out.println("University Name: " + agx.University_name);
+        System.out.println("Course Name: " + agx.Course_name);
+        System.out.println("Course Code: " + agx.Course_code);
+
+
+    }
+
+    public static void main(String[] args) {
+
+        Aggregated obj1 = new Aggregated();
+
+        Aggregation ag1 = new Aggregation("James", 234, "Ggaba23",
+                "It", "BIT23", "IUEA");
+
+        obj1.display("Aden", 2343, "23BOX.56", ag1);
+    }
+}

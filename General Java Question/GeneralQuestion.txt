@@ -1,0 +1,570 @@
+
+class vehicle
+{
+    double importDuty;
+    double ValueAddedTax;
+    double WithholdingTax;
+    double infrastructureLevy = 150000;
+    double stampDuty = 35000;
+    double formFees = 20000;
+    double ExciseDuty = 200000;
+    double digitalPlateSystem = 700000;
+    double AnalogPlateSystem = 300000;
+    double Tax;
+    boolean modeTransport;
+    int dayOfTheBonds;
+
+}
+
+class Ambulance extends vehicle
+{
+    double costInsuranceFreight;
+    double seatingCapacity;
+    double grossWeight;
+    double EngineCapacity;
+    int ageOfTheCar;
+    double ageTax, modTax, dayTax;
+
+    Ambulance(double costInsuranceFreight,double seatingCapacity,double grossWeight,
+    double EngineCapacity,int ageOfTheCar, boolean carrierBed, int dayOfTheBonds)
+    {
+        this.costInsuranceFreight = costInsuranceFreight;
+        this.seatingCapacity = seatingCapacity;
+        this.grossWeight = grossWeight;
+        this.EngineCapacity = EngineCapacity;
+        this.ageOfTheCar = ageOfTheCar;
+        this.modeTransport = carrierBed;
+        this.dayOfTheBonds = dayOfTheBonds;
+    }
+
+    public double TaxPayment()
+    {
+
+        if (ageOfTheCar > 10) {
+            ageTax = costInsuranceFreight*0.15;
+            System.out.println("The tax payment of the ambulance grater than 10years is : " + Tax + " UGsh. ");
+        }
+
+        else
+        {
+            ageTax = infrastructureLevy;
+            System.out.println("The tax payment of the ambulance less than 10years is : " +Tax + " UGsh. ");
+        }
+
+        if (modeTransport) {
+            modTax = costInsuranceFreight*0.005;
+            System.out.println("Tax payment of the carrier bed of the ambulance is : " + Tax + " UGsh. ");
+        }
+
+        else
+        {
+            modTax = costInsuranceFreight*0.015;
+            System.out.println("Tax payment of the driving ambulance from border to the country is : " + Tax + " UGsh. ");
+        }
+
+        if (dayOfTheBonds > 0) {
+            dayTax = dayOfTheBonds*15000;
+            System.out.println("The tax of the  stored bond is " + Tax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("There is no bond days....");
+        }
+
+        Tax = stampDuty + formFees + ExciseDuty + digitalPlateSystem + modTax + ageTax + dayTax + costInsuranceFreight;
+
+        System.out.println("The whole taxes of the Ambulance is " + Tax + " UGsh. ");
+
+        return Tax;
+    }
+
+}
+
+class Estate extends vehicle
+{
+    double costInsuranceFreight;
+    double seatingCapacity;
+    double grossWeight;
+    double EngineCapacity;
+    int ageOfTheCar;
+    double sitCapTAx, gWTax, ECapTax, ageTax, modTax, dayTax;
+
+    Estate(double costInsuranceFreight,double seatingCapacity,double grossWeight,
+    double EngineCapacity,int ageOfTheCar, boolean carrierBed, int dayOfTheBonds)
+    {
+        this.costInsuranceFreight = costInsuranceFreight;
+        this.seatingCapacity = seatingCapacity;
+        this.grossWeight = grossWeight;
+        this.EngineCapacity = EngineCapacity;
+        this.ageOfTheCar = ageOfTheCar;
+        this.modeTransport = carrierBed;
+        this.dayOfTheBonds = dayOfTheBonds;
+    }
+
+    public double TaxPayment()
+    {
+        if (seatingCapacity > 5) {
+            sitCapTAx = seatingCapacity*250000;
+            System.out.println("The extra payment of the estate seats more than five is : " + sitCapTAx + " UGsh. ");
+
+            }
+
+            else
+            {
+                sitCapTAx = infrastructureLevy;
+                System.out.println("Tax of the estate seats is : " + sitCapTAx + " UGsh. ");
+            }
+
+            if (grossWeight > 1500 && grossWeight < 2000) {
+                gWTax = costInsuranceFreight*0.05;
+                System.out.println("the tax of the GrossWeight of the estate b/w 1500 and 2000 tones is  : " + gWTax + " UGsh. ");
+
+            }
+            else if (grossWeight > 2000) {
+                gWTax = costInsuranceFreight*0.1;
+                System.out.println("the tax of the GrossWeight of the estate more than 2000 tones is : " + gWTax + " UGsh. ");
+            }
+            else
+            {
+                gWTax = costInsuranceFreight*0.02;
+                System.out.println("the tax of the GrossWeight of the estate less than 1500 tones is : " + gWTax + " UGsh. ");
+            }
+
+            if (EngineCapacity > 1800) {
+                ECapTax = costInsuranceFreight*0.05;
+                System.out.println("The tax of the engine capacity of the estate more than 1800cc is : " + ECapTax + " UGsh. ");
+            }
+
+            else
+            {
+                ECapTax = costInsuranceFreight*0.025;
+                System.out.println("The tax of the engine capacity of the estate less than 1800cc is : " + ECapTax + " UGsh. ");
+            }
+
+            if (ageOfTheCar >= 1 && ageOfTheCar < 5) {
+                ageTax = (costInsuranceFreight*0.1) + infrastructureLevy;
+                System.out.println("The tax of the estate aged b/w one and five is : " + ageTax + " UGsh. ");
+            }
+
+            else if (ageOfTheCar > 5 && ageOfTheCar < 10) {
+                ageTax = (costInsuranceFreight*0.05) + infrastructureLevy;
+                System.out.println("The tax of the estate aged b/w five and ten is : " + ageTax + " UGsh. ");
+            }
+
+            else
+            {
+                ageTax = (costInsuranceFreight*0.15) + infrastructureLevy;;
+                System.out.println("The tax of the estate aged above ten years is : " + ageTax + " UGsh. ");
+            }
+
+            if (modeTransport) {
+                modTax = costInsuranceFreight*0.005;
+                System.out.println("The tax payment of the estate carried by bed is : " + modTax + " UGsh.");
+            }
+
+            else
+            {
+                modTax = costInsuranceFreight*0.015;
+                System.out.println("The tax of the driving estate from the outside of the country is : " + modTax + " UGsh. ");
+            }
+
+            if (dayOfTheBonds > 0) {
+                dayTax = dayOfTheBonds*15000;
+                System.out.println("The tax of the stored bond of the estate is " + dayTax + " UGsh. ");
+            }
+
+            else
+            {
+                System.out.println("There is no bond days....");
+            }
+
+            Tax = costInsuranceFreight*0.25 + costInsuranceFreight*0.18 + costInsuranceFreight*0.06 +
+            stampDuty + formFees + ExciseDuty + digitalPlateSystem + sitCapTAx + gWTax + ECapTax
+            + ageTax + modTax + dayTax + costInsuranceFreight;
+
+            System.out.println("The whole taxes of the estate is " + Tax + " UGsh.");
+
+        return Tax;
+    }
+}
+
+class Sedan extends vehicle
+{
+    double costInsuranceFreight;
+    double seatingCapacity;
+    double grossWeight;
+    double EngineCapacity;
+    int ageOfTheCar;
+    double gWTax, ECapTax, ageTax,modTax,dayTax;
+
+   Sedan(double costInsuranceFreight,double grossWeight,
+    double EngineCapacity,int ageOfTheCar, boolean carrierBed, int dayOfTheBonds)
+    {
+        this.costInsuranceFreight = costInsuranceFreight;
+        // this.seatingCapacity =
+        this.grossWeight = grossWeight;
+        this.EngineCapacity = EngineCapacity;
+        this.ageOfTheCar = ageOfTheCar;
+        this.modeTransport = carrierBed;
+        this.dayOfTheBonds = dayOfTheBonds;
+
+    }
+
+    public double TaxPayment()
+    {
+        if (grossWeight > 1500 && grossWeight < 2000) {
+            gWTax = costInsuranceFreight*0.1;
+            System.out.println("The tax of the gross weight of the sedan b/w 1500 and 2000 tones is : " + gWTax + " UGsh. ");
+        }
+
+        else if (grossWeight > 2000) {
+            gWTax = costInsuranceFreight*0.15;
+            System.out.println("the tax of sedan where its gross weight is greater than 2000 tones : " + gWTax + " UGsh. ");
+        }
+
+        else
+        {
+            gWTax = costInsuranceFreight*0.02;
+            System.out.println("the tax of the sedan its gross weight is less than 1500 tones is : " + gWTax + " UGsh. ");
+        }
+
+        if (EngineCapacity > 2000) {
+            ECapTax = costInsuranceFreight*0.1;
+            System.out.println("the tax of the sedan its engine capacity more than 2000CC is : " + ECapTax + " UGsh. ");
+        }
+
+        else if (EngineCapacity > 1500 && EngineCapacity < 2000) {
+            ECapTax = + costInsuranceFreight*0.05;
+            System.out.println("the tax of sedan of its engine capacity b/w 1500 and 2000 CC is : " + ECapTax + " UGsh. ");
+        }
+
+        else
+        {
+            ECapTax = costInsuranceFreight*0.025;
+            System.out.println("the tax of the sedan its engine capacity is less than 1500CC is : " + ECapTax + " UGsh. ");
+        }
+
+        if (ageOfTheCar > 10 && ageOfTheCar < 15) {
+            ageTax = costInsuranceFreight + (costInsuranceFreight*0.1) + infrastructureLevy;;
+            System.out.println("the tax of the sedan aged b/w 10 up to 15 is : " + ageTax + " UGsh.");
+        }
+
+        else if (ageOfTheCar > 5 && ageOfTheCar < 10) {
+            ageTax = (costInsuranceFreight*0.05) + infrastructureLevy;
+            System.out.println("the tax of the sedan aged b/w 5 up to 10 is : " + ageTax + " UGsh. ");
+        }
+
+        else if (ageOfTheCar < 5) {
+            ageTax = (costInsuranceFreight*0.015) + infrastructureLevy;
+            System.out.println("the tax of the sedan its age less than 5years is : " + ageTax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("the importer don't allowed the sedan bigger than 15year...");
+        }
+
+        if (modeTransport) {
+            modTax = costInsuranceFreight*0.005;
+            System.out.println("The tax of the carried sedan is : " + modTax + " UGsh. ");
+        }
+
+        else
+        {
+            modTax = costInsuranceFreight*0.015;
+            System.out.println("The tax of the driving sedan from the outside of the country is : " + modTax + " UGsh. ");
+        }
+
+        if (dayOfTheBonds > 0) {
+            dayTax = dayOfTheBonds*15000;
+            System.out.println("The tax of the sedan stored in bond is " + dayTax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("There is no bond days stored a sedan....");
+        }
+
+        Tax = costInsuranceFreight*0.25 + costInsuranceFreight*0.18 +
+        costInsuranceFreight*0.06 +infrastructureLevy + stampDuty + formFees +
+        ExciseDuty + digitalPlateSystem + gWTax + ECapTax + ageTax + modTax + dayTax + costInsuranceFreight;
+
+        System.out.println("The whole taxes of the sedan is " +Tax + " UGsh. ");
+
+        return Tax;
+    }
+
+}
+
+class SUV extends vehicle
+{
+    double costInsuranceFreight;
+    double seatingCapacity;
+    double grossWeight;
+    double EngineCapacity;
+    int ageOfTheCar;
+    double sitCapTAx, gWTax, ageTax, modTax, dayTax;
+
+   SUV(double costInsuranceFreight,double seatingCapacity,double grossWeight,
+        int ageOfTheCar, boolean carrierBed, int dayOfTheBonds)
+    {
+        this.costInsuranceFreight = costInsuranceFreight;
+        this.seatingCapacity = seatingCapacity;
+        this.grossWeight = grossWeight;
+        this.ageOfTheCar = ageOfTheCar;
+        this.modeTransport = carrierBed;
+        this.dayOfTheBonds = dayOfTheBonds;
+    }
+
+    public double TaxPayment()
+    {
+        if (seatingCapacity > 5) {
+            sitCapTAx = seatingCapacity*350000;
+            System.out.println("The tax seating capacity more than five of the SUV is : " + sitCapTAx + " UGsh. ");
+        }
+
+        else
+        {
+            sitCapTAx = infrastructureLevy;
+            System.out.println("pay the normal payment..." + sitCapTAx + " UGsh. ");
+        }
+
+        if (grossWeight > 5000) {
+            gWTax = costInsuranceFreight*0.15;
+            System.out.println("tax of the SUV where its gross weight greater than 5000 is : " + gWTax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("won't pay weight tax...");
+        }
+
+        if (ageOfTheCar > 1 && ageOfTheCar < 5) {
+            ageTax = infrastructureLevy + costInsuranceFreight*0.01;
+            System.out.println("The tax of SUV aged b/w a year up to 5years is : " + ageTax + " UGsh. ");
+        }
+
+        else if (ageOfTheCar > 5 && ageOfTheCar < 10) {
+            ageTax = (costInsuranceFreight*0.15) + infrastructureLevy;
+            System.out.println("The tax of the SUV aged b/w 5years up to 10 years is : " + ageTax + " UGsh. ");
+        }
+
+        else
+        {
+            ageTax = (costInsuranceFreight*0.25) + infrastructureLevy;
+            System.out.println("The tax of the SUV aged above 10 years is : " + ageTax + " UGsh. ");
+        }
+
+        if (modeTransport) {
+            modTax = costInsuranceFreight*0.005;
+            System.out.println("The tax payment of the carried SUV is : " + modTax + " UGsh. ");
+        }
+
+        else
+        {
+            modTax = costInsuranceFreight*0.015;
+            System.out.println("The tax of the drove SUV from the outside of the country is : " + modTax + " UGsh. ");
+        }
+
+        if (dayOfTheBonds > 0) {
+            modTax = dayOfTheBonds*15000;
+            System.out.println("The tax of the SUV stored in the bond is " + modTax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("There is no bond days....");
+        }
+
+        Tax = costInsuranceFreight*0.25 + costInsuranceFreight*0.18 + costInsuranceFreight*0.06
+        + infrastructureLevy + stampDuty + formFees + ExciseDuty + AnalogPlateSystem +
+        sitCapTAx + gWTax + ageTax + modTax + dayTax + costInsuranceFreight;
+
+        System.out.println("The whole taxes of the SUV is " + Tax + " UGsh. ");
+
+        return Tax;
+    }
+}
+
+class Trailer extends vehicle
+{
+    double costInsuranceFreight;
+    double seatingCapacity;
+    double grossWeight;
+    double EngineCapacity;
+    int ageOfTheCar;
+    double gWTax, ECapTax, ageTax, modTax, dayTax;
+
+    Trailer(double costInsuranceFreight,double grossWeight,
+    double EngineCapacity,int ageOfTheCar, boolean carrierBed, int dayOfTheBonds)
+    {
+        this.costInsuranceFreight = costInsuranceFreight;
+        this.grossWeight = grossWeight;
+        this.EngineCapacity = EngineCapacity;
+        this.ageOfTheCar = ageOfTheCar;
+        this.modeTransport = carrierBed;
+        this.dayOfTheBonds = dayOfTheBonds;
+    }
+
+    public double TaxPayment()
+    {
+        if (grossWeight > 15000 && grossWeight < 20000) {
+            gWTax = costInsuranceFreight*0.15;
+            System.out.println("The tax of the Trailer of its gross weight b/w 15k and 20k is : " + gWTax + " UGsh. ");
+        }
+
+        else if (grossWeight > 20000) {
+            gWTax = costInsuranceFreight*0.25;
+            System.out.println("The tax of the Trailer of its gross weight greater than 20k is : " + gWTax + " UGsh. ");
+        }
+
+        else{
+            gWTax = costInsuranceFreight*0.05;
+            System.out.println("The tax of the Trailer of its gross weight is less than 15k is : " + gWTax + " UGsh. ");
+        }
+
+        if (EngineCapacity > 20000) {
+            ECapTax = costInsuranceFreight*0.1;
+            System.out.println("The tax of the trailer of its engine capacity greater than 20000CC is : " + ECapTax + " UGsh. ");
+        }
+
+        else if (EngineCapacity > 15000 && EngineCapacity < 20000) {
+            ECapTax = costInsuranceFreight*0.05;
+            System.out.println("The tax of the trailer of its engine capacity ranged b/w 15000CC and 20000CC is : " + ECapTax + " UGsh. ");
+        }
+
+        else {
+            ECapTax = costInsuranceFreight*0.025;
+            System.out.println("The tax of the trailer of its engine capacity less than 15000CC is : " + ECapTax + " UGsh. ");
+        }
+
+        if (ageOfTheCar > 10 && ageOfTheCar < 15) {
+            Tax = (costInsuranceFreight*0.1) + infrastructureLevy;
+            System.out.println("Tax of the tailer aged b/w 10 up to 15 years is : " +Tax + " UGsh. ");
+        }
+
+        else if (ageOfTheCar > 5 && ageOfTheCar < 10) {
+            ageTax = (costInsuranceFreight*0.05) + infrastructureLevy;
+            System.out.println("Tax of the tailer aged b/w 5 up to 10 years is : " + ageTax + " UGsh. ");
+        }
+
+        else if (ageOfTheCar < 5)
+        {
+            ageTax = (costInsuranceFreight*0.015) + infrastructureLevy;
+            System.out.println("Tax of the tailer its age less 5 years is : " + ageTax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("Can't be imported a trailer bigger than 15years...");
+        }
+
+        if (modeTransport) {
+            modTax = costInsuranceFreight*0.005;
+            System.out.println("The tax payment of the carried trailer is : " + modTax + " UGsh. ");
+        }
+
+        else
+        {
+            modTax = costInsuranceFreight*0.015;
+            System.out.println("The tax of the trailer  drove from the outside of the country is : " + modTax + " UGsh. ");
+        }
+
+        if (dayOfTheBonds > 0) {
+            dayTax = dayOfTheBonds*15000;
+            System.out.println("The tax of the trailer stored in the bond is " + dayTax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("There is no trailer store days in a bond ....");
+        }
+
+        Tax = costInsuranceFreight*0.25 + costInsuranceFreight*0.18 + costInsuranceFreight*0.06
+        + infrastructureLevy + stampDuty + formFees + ExciseDuty +
+        AnalogPlateSystem + costInsuranceFreight + gWTax + ECapTax + ageTax + modTax + dayTax;
+
+        System.out.println("The whole taxes of the trailer is : " +Tax + " UGsh. ");
+
+        return Tax;
+    }
+}
+
+class Others extends vehicle
+{
+    double costInsuranceFreight;
+    double seatingCapacity;
+    double grossWeight;
+    double EngineCapacity;
+    int ageOfTheCar;
+    double modTax, dayTax;
+
+    Others(double costInsuranceFreight, boolean carrierBed, int dayOfTheBonds)
+    {
+        this.costInsuranceFreight = costInsuranceFreight;
+        this.modeTransport = carrierBed;
+        this.dayOfTheBonds = dayOfTheBonds;
+    }
+
+     double TaxPayment()
+    {
+        if (modeTransport) {
+            modTax = costInsuranceFreight*0.005;
+            System.out.println("The tax payment of the other cars carried by bed is : " + modTax + " UGsh. ");
+        }
+
+        else
+        {
+            modTax = costInsuranceFreight*0.015;
+            System.out.println("The tax of the cars drove from the outside of the country is : " + modTax + " UGsh. ");
+        }
+
+        if (dayOfTheBonds > 0) {
+            dayTax = dayOfTheBonds*15000;
+            System.out.println("The tax of the cars stored in a bond is " + dayTax + " UGsh. ");
+        }
+
+        else
+        {
+            System.out.println("There is no cars stored in bond ....");
+        }
+
+        Tax =  costInsuranceFreight*0.25 + costInsuranceFreight*0.18 + costInsuranceFreight*0.06
+        + infrastructureLevy + stampDuty + formFees + ExciseDuty + AnalogPlateSystem + costInsuranceFreight
+        + modTax + dayTax;
+
+        System.out.println("The whole taxes of the other cars is : " + Tax + " UGsh. ");
+
+        return Tax;
+    }
+}
+
+
+public class Tax {
+
+    public static void main(String[] args) {
+
+        Ambulance ambulance = new Ambulance(230000, 5, 1300, 18000, 12, true, 3);
+        Estate estate = new Estate(29990, 7, 1800, 1600, 9, false, 8);
+        Sedan sedan = new Sedan(9999, 300, 1200, 13, false, 12);
+        SUV suv = new SUV(3333, 4, 6000, 12, true, 4);
+        Trailer trailer = new Trailer(2343, 9000, 22000, 9, false, 6);
+        Others others = new Others(23412.23, true, 2);
+
+        System.out.println();
+        ambulance.TaxPayment();
+        System.out.println();
+        estate.TaxPayment();
+        System.out.println();
+        sedan.TaxPayment();
+        System.out.println();
+        suv.TaxPayment();
+        System.out.println();
+        trailer.TaxPayment();
+        System.out.println();
+        others.TaxPayment();
+        System.out.println();
+
+    }
+}

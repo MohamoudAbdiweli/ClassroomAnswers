@@ -1,0 +1,25 @@
+package Question3;
+
+public class Aggregation {
+
+    String Lecturer_name;
+    int Lecture_id;
+    String Lecturer_address;
+    String Course_name;
+    String Course_code;
+    String University_name;
+
+
+    public Aggregation(String Lecturer_name, int Lecture_id, String Lecturer_address,
+                       String course,String Course_code,String University_name) {
+
+        this.Lecturer_name = Lecturer_name;
+        this.Lecture_id = Lecture_id;
+        this.Lecturer_address = Lecturer_address;
+        this.Course_name = course;
+        this.Course_code = Course_code;
+        this.University_name = University_name;
+
+    }
+
+}

@@ -1,0 +1,425 @@
+package inheritance;
+
+
+class plant
+
+{
+
+    String color = "yellow";
+    String stemColor = "black";
+    public void growing()
+
+    {
+        System.out.println("growing ....");
+    }
+
+    public void fertalize()
+
+    {
+        System.out.println("fertalizing ....");
+    }
+
+    public void softening()
+    {
+        System.out.println("softening...");
+    }
+Skip to main content
+Google Classroom
+Classroom
+SEPT 2024: APPLIED OOP
+JAVA PROGRAMMING
+Home
+Calendar
+Enrolled
+To-do
+S
+SEPT 2024: APPLIED OOP
+JAVA PROGRAMMING
+Archived classes
+Settings
+INHERITANCE & POLYMORPHISM
+INHERITANCE & POLYMORPHISM
+Kato Kenneth
+•
+Sep 25
+6
+/10
+6 points out of possible 10
+Due Oct 2, 11:00 PM
+ATTEMPT ALL QUESTIONS
+1 class comment
+
+Dalia Digol SolomonOct 2
+Dalia Digol Solomon 23/1589/BSCS-S
+
+Add class comment…
+
+Your work
+Graded
+
+MOHAMUD ABDIWELI ShIRE 23-1679-BSCS-S - PROBLEM #5 - INHERITANCE & POLYMORPHISM.docx
+Word
+
+Question1.text
+Text
+
+Question2.text
+Text
+Work cannot be turned in after the due date
+Private comments
+package test;
+
+
+class grandParent
+
+{
+
+    String color = "black";
+    String hairColor = "brown";
+    public void walking()
+
+    {
+        System.out.println("Walking by ....");
+    }
+
+    public void sleep()
+
+    {
+        System.out.println("sleeping at the ....");
+    }
+
+    public void prepare()
+    {
+        System.out.println("preparing...");
+    }
+
+}
+
+class parent extends grandParent
+
+{
+
+    String tongueColor = "tomato";
+
+    public void walking()
+
+    {
+        System.out.println("the parent Walk by motorcycle");
+    }
+
+    public void sleep()
+    {
+        System.out.println("the parent Sleep at the second floor");
+    }
+
+
+    public void learn()
+    {
+        System.out.println("learning ....");
+    }
+}
+
+class children extends parent
+
+{
+    String eyebrowColor = "blue";
+
+
+    public void learn()
+    {
+        System.out.println("The children learn a university");
+    }
+
+    public void write()
+    {
+        System.out.println("writing different books...");
+    }
+}
+
+class father extends grandParent
+
+{
+
+    public void walking()
+
+    {
+        System.out.println("the father Walks by school van");
+    }
+
+    public void work()
+    {
+        System.out.println("The father works at the central bank");
+    }
+
+}
+
+class mother extends grandParent
+
+{
+
+    public void sleep()
+    {
+        System.out.println("the mother Sleeps at the last floor");
+    }
+
+    public void work()
+
+    {
+        System.out.println("The mother works at the home");
+    }
+
+
+    public static void main(String[] args) {
+
+        grandParent p = new parent();
+        parent parent = new parent();
+        parent c = new children();
+        children child = new children();
+        grandParent f = new father();
+        father father = new father();
+        grandParent m = new mother();
+        mother mother = new mother();
+
+        System.out.println("parent class inherits the following methods from the base class  : ");
+
+        p.sleep();
+        p.walking();
+        p.prepare();
+
+        System.out.println("the parent class overrides the following methods from the supper class except learn method : ");
+
+        parent.sleep();
+        parent.walking();
+        parent.learn();
+
+
+        System.out.println("parent class inherits the following fields from the base class except the tongue color field : ");
+
+        System.out.println("parent body color : " +parent.color + " , " + " parent hair color :"
+        +parent.hairColor + " ," + " parent tongue color" + parent.tongueColor);
+
+
+        System.out.println("the children class inherits the following methods from the first child class : ");
+
+        c.sleep();
+        c.walking();
+        c.learn();
+        c.prepare();
+
+        System.out.println("the children class overrides the learn method from the the first subclass : ");
+
+        child.learn();
+        child.write();
+
+        System.out.println("the children class inherits the following fields from the first subclass except the eyebrow color field : ");
+
+        System.out.println("children body color :" +child.color + " ," + " children hair color : "
+        + child.hairColor + " , " + " children tongue color : "
+        + child.tongueColor + " , " + " children eye brush color : " + child.eyebrowColor);
+
+        System.out.println("the father class inherits the following methods from the super class : ");
+
+        f.sleep();
+        f.walking();
+
+        System.out.println("the mother class overrides the following methods from the super class except work method : ");
+
+        father.sleep();
+        father.walking();
+        father.work();
+
+        System.out.println("the father class inherits all the following fields from the super class : ");
+
+        System.out.println("father body color : "  + father.color + " , " + " father hair color : " + father.hairColor);
+
+
+        System.out.println("the mother class inherits the following methods from the super class : ");
+
+        f.sleep();
+        f.walking();
+
+        System.out.println("the mother class overrides the following methods from the super class except work method : ");
+
+        mother.sleep();
+        mother.walking();
+        mother.work();
+
+        System.out.println("the father class inherits all the following fields from the super class : ");
+
+        System.out.println("mother body color : "  + mother.color + " , " + " mother hair color : " + mother.color + mother.hairColor);
+
+    }
+
+    }
+
+Question1.text
+Displaying Question1.txt.
+}
+
+class tree extends plant
+
+{
+
+    String rootColor = "cream";
+
+    public void growing()
+
+    {
+        System.out.println("the root color is cream ");
+    }
+
+    public void fertalize()
+    {
+        System.out.println("the tree going to fertalize");
+    }
+
+
+    public void prune()
+    {
+        System.out.println("the tree pruned ....");
+    }
+}
+
+class apple extends tree
+
+{
+    double weight = 1.2;
+
+    public void prune()
+    {
+        System.out.println("the tree pruned ....");
+    }
+
+    public void ripening()
+    {
+        System.out.println("the apple is ripening...");
+    }
+}
+
+class vegetables extends plant
+
+{
+
+    public void growing()
+
+    {
+        System.out.println("the vegetable is going to grow");
+    }
+
+    public void wilting()
+    {
+        System.out.println("The vegetable is wiltining...");
+    }
+
+}
+
+class herbs extends plant
+
+{
+
+    public void grow()
+    {
+        System.out.println("the weight of herbs was increased");
+    }
+
+    public void softening()
+
+    {
+        System.out.println("The herbs was become very tiny and also soft");
+    }
+
+    public void bolting()
+
+
+   {
+        System.out.println("bolting...");
+    }
+
+
+     public class Main()
+{
+
+
+    public static void main(String[] args) {
+
+        plant t = new tree();
+        tree tree = new tree();
+        tree a = new apple();
+        apple apple = new apple();
+        plant v = new vegetables();
+        vegetables vegetable = new vegetables();
+        plant h = new herbs();
+        herbs herb = new herbs();
+
+        System.out.println("tree class inherits the following methods from the base class  : ");
+
+        t.growing();
+        t.fertalize();
+        t.prune();
+
+        System.out.println("the tree class overrides the following methods from the supper class except prune method : ");
+
+        tree.growing();
+        tree.fertalize();
+
+
+        System.out.println("tree class inherits the following fields from the base class except the root color field : ");
+
+        System.out.println("plant color : " +t.color + " , " + " plant stem color :"
+        +t.stemColor + " ," + " tree root color" + t.rootColor);
+
+
+        System.out.println("the apple class inherits the following methods from the first child class : ");
+
+        a.growing();
+        a.fertalize();
+        a.softening();
+        a.prune();
+
+        System.out.println("the apple class overrides the prune method from the the first subclass : ");
+
+        apple.prune();
+        apple.ripening();
+
+        System.out.println("the apple class inherits the following fields from the first subclass except the weight field : ");
+
+        System.out.println("apple color :" +apple.color + " ," + " apple stem color : "
+        + apple.stemColor + " , " + " apple root color : "
+        + apple.rootColor + " , " + " stem weight : " + apple.weight + " g ");
+
+        System.out.println("the vegetables class inherits the following methods from the super class : ");
+
+        v.growing();
+        v.softening();
+        v.fertalizing();
+
+        System.out.println("the vegetables class overrides the following method from the super class : ");
+
+        vegetable.growing();
+
+        System.out.println("the vegetables class inherits all the following fields from the super class : ");
+
+        System.out.println("vegetables color : "  + vegetable.color + " , " + " vegetables stem color : " + vegetable.stemColor);
+
+
+        System.out.println("the herbs class inherits the following methods from the super class : ");
+
+        h.growing();
+        h.fertalizing();
+        h.softening();
+
+        System.out.println("the herbs class overrides the following methods from the super class except work method : ");
+
+        herb.growing();
+        herb.softening();
+        herb.bolting();
+
+        System.out.println("the herbs class inherits all the following fields from the super class : ");
+
+        System.out.println("herbs color : "  + herbs.color + " , " + " herbs stem color : " + herb.stemColor + " , " + " herbs root color " + herb.rootColor);
+
+    }
+
+    }
+}
+

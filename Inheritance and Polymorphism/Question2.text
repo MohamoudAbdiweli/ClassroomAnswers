@@ -1,0 +1,77 @@
+package test;
+
+class person
+{
+    public void display()
+
+    {
+        System.out.println("am busy!");
+    }
+
+    public void calculation(int a, int b)
+    {
+        System.out.println("The addition answer it will be "+ a + b);
+    }
+
+    public void calculation()
+
+    {
+        System.out.println("We shall find the calculation");
+    }
+
+
+}
+
+class employee extends person
+{
+
+    public void display()
+    {
+        System.out.println("am working all the days");
+    }
+}
+
+class owner extends person
+
+{
+    public void display()
+
+    {
+        System.out.println("am working once all the year");
+    }
+}
+
+
+public class Question2 {
+    
+    public static void test1(person p)
+    {
+        p.display();
+    }
+
+    public static void test2(employee e)
+    {
+        e.display();
+    }
+
+       public static void  test3(owner o)
+       {
+        o.display();
+       }
+    public static void main(String[] args) {
+
+        person p = new person();
+        
+        employee e = new employee();
+
+        owner o = new owner();
+
+        e.display();
+        o.display();
+
+        e.calculation();
+        e.calculation(2, 4);
+
+
+    }
+}

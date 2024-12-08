@@ -1,0 +1,23 @@
+package Question4.example;
+
+public class Class3 {
+
+    protected String fName;
+    protected String lName;
+    protected int age;
+    protected int id;
+
+    protected Class3(String fName, String lName, int age, int id) {
+
+        this.fName = fName;
+        this.lName = lName;
+        this.age = age;
+        this.id = id;
+
+    }
+
+    protected void why()
+    {
+        System.out.println(" Method from protected class : " + fName + " " + lName + " " + age + " " + id);
+    }
+}

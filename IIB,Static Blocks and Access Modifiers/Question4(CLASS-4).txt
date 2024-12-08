@@ -1,0 +1,43 @@
+package Question4.example;
+
+public class Class4 {
+
+    private String fName;
+    private String lName;
+    private int age;
+    private int id;
+
+
+
+      public  String getFName() {
+            return fName;
+    }
+
+       public  void setFName(String fName) {
+            this.fName = fName;
+    }
+
+      public  String getLName() {
+           return lName;
+    }
+
+       public void setLName(String lName) {
+           this.lName = lName;
+    }
+
+       public int getAge() {
+          return age;
+    }
+
+       public void setAge(int age) {
+          this.age = age;
+    }
+
+       public int getId() {
+          return id;
+    }
+
+       public void setId(int id) {
+          this.id = id;
+    }
+}

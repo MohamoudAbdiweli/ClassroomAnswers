@@ -1,0 +1,46 @@
+package Question4.example;
+
+import Question4.hello.Class1;
+
+public class Test {
+
+    public static void main(String[] args) {
+
+        Class1 c1 = new Class1("Abdi", "Ahmed", 20, 3454);
+
+        System.out.println(" Fields from public class : " + c1.fName + " , " + c1.lName + " , " + c1.age + " , " + c1.id);
+
+        c1.hello();
+
+        System.out.println(" ");
+
+        Class2 c2 = new Class2("James", "John", 30, 9054);
+
+        System.out.println(" Fields from default class : " + c2.fName + " , " + c2.lName + " , " + c2.age + " , " + c2.id);
+
+        c2.display();
+
+        System.out.println(" ");
+
+        Class3 c3 = new Class3("jama", "Khadar", 40, 5432);
+
+        System.out.println(" Fields from protected class : " + c3.fName + " , " + c3.lName + " , " + c3.age + " , " + c3.id);
+
+        c3.why();
+
+        System.out.println(" ");
+
+        Class4 c4 = new Class4();
+
+        c4.setFName("Ahmed");
+        c4.setLName("Said");
+        c4.setAge(50);
+        c4.setId(7766);
+
+        System.out.println(" Methods from private method " + c4.getFName() + " , "
+                + c4.getLName() + " , " + c4.getAge() + " , " + c4.getId());
+
+
+    }
+
+}

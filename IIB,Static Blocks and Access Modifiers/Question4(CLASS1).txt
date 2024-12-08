@@ -1,0 +1,24 @@
+package Question4.hello;
+
+public class Class1 {
+
+    public String fName;
+    public String lName;
+    public int age;
+    public int id;
+
+    public Class1(String fName, String lName, int age, int id) {
+
+        this.fName = fName;
+        this.lName = lName;
+        this.age = age;
+        this.id = id;
+
+    }
+
+    public void hello()
+    {
+        System.out.println(" Method from public class : " + fName + " " + lName + " " + age + " " + id);
+
+    }
+}

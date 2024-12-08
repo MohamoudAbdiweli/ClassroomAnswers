@@ -1,0 +1,205 @@
+module firstModule {
+    exports firstPackage;
+    requires fourthModule;
+}
+
+package firstPackage;
+
+public class user {
+    private String email;
+    private String name;
+
+    public User(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void displayUser() {
+        System.out.println("User Email: " + email + ", " + " Name: " + name);
+    }
+}
+
+
+module secondModule {
+    exports secondPackage;
+}
+
+package secondPackage;
+
+public class Item {
+    private String number;
+    private String brand;
+
+    public Item(String number, String brand) {
+        this.number = number;
+        this.brand = brand;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void displayItem() {
+        System.out.println("Item Number: " + number + ", " + " Name: " + name);
+    }
+}
+
+
+module thirdModule {
+    exports thirdPackage;
+    requires firstModule;
+    requires secondModule;
+    requires fourthModule;
+}
+
+
+package thirdPackage;
+import firstPackage.User;
+import secondPackage.Item;
+import fourthPackage.Utility;
+
+public class Transaction {
+    private String id;
+    private User user;
+    private Item item;
+
+    public Transaction(String id, User user, Item item) {
+        this.id = id;
+        this.user = user;
+        this.item = item;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void displayTransaction() {
+        System.out.println("Transaction ID: " + id);
+        user.displayUser();
+        item.displayItem();
+    }
+}
+
+
+module fourthModule {
+    exports fourthPackage;
+}
+
+
+package fourthPackage;
+
+public class login {
+    public static boolean validateStringInput(String input) {
+        return input != null && !input.isEmpty();
+    }
+
+    public static void logMessage(String message) {
+        System.out.println(message);
+    }
+}
+
+
+module fivethModule {
+    requires firstModule;
+    requires secondModule;
+    requires thirdModule;
+    requires fourthModule;
+}
+
+
+package fivethModule;
+import firstPackage.User;
+import secondPackage.Item;
+import thirdPackage.Transaction;
+import fourthPackage.login;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("1. Add User");
+            System.out.println("2. Add Item");
+            System.out.println("3. Record Transaction");
+            System.out.println("4. Exit");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter User Email:");
+                    String userEmail = scanner.nextLine();
+                    System.out.println("Enter User Name:");
+                    String userName = scanner.nextLine();
+
+                    if (Utility.validateStringInput(userEmail) && login.validateStringInput(userName)) {
+                        User user = new User(userEmail, userName);
+                        user.displayUser();
+                    } else {
+                        login.logMessage("Invalid input");
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("Enter Item Number:");
+                    String itemNumber = scanner.nextLine();
+                    System.out.println("Enter Item Brand:");
+                    String itemBrand = scanner.nextLine();
+
+                    if (login.validateStringInput(itemId) && login.validateStringInput(itemName)) {
+                        Item item = new Item(itemNumber, itemBrand);
+                        item.displayItem();
+                    } else {
+                        login.logMessage("Invalid input");
+                    }
+                    break;
+
+                 case 3:
+                    System.out.println("Enter Transaction ID:");
+                    String transactionId = scanner.nextLine();
+                    System.out.println("Enter User ID:");
+                    String userIdTransaction = scanner.nextLine();
+                    System.out.println("Enter Item ID:");
+                    String itemIdTransaction = scanner.nextLine();
+
+                    if (login.validateStringInput(transactionId) && login.validateStringInput(userIdTransaction) && 
+                        login.validateStringInput(itemIdTransaction)) {
+                        User userTransaction = new User(userEmailTransaction, "");
+                        Item itemTransaction = new Item(itemNumberTransaction, "");
+                        Transaction transaction = new Transaction(transactionId, userTransaction, itemTransaction);
+                        transaction.displayTransaction();
+                    } else {
+                        login.logMessage("Invalid input");
+                    }
+                    break;
+
+                case 4:
+                    System.exit(0);
+                    break;
+
+                default:
+                    login.logMessage("Invalid choice");
+                    }
+            }
+        }
+    }

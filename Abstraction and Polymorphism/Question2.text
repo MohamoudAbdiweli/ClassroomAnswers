@@ -1,0 +1,130 @@
+
+import java.util.*;
+
+interface Object
+{
+    void performAction();
+    void haltAction();
+    int getAttribute();
+    String getType();
+}
+
+class type1 implements Object
+{
+    public void performAction()
+    {
+        System.out.println("drive...");
+    }
+    public void haltAction()
+    {
+        System.out.println("Stop...");
+    }
+    public int getAttribute()
+    {
+        return 10;
+
+    }
+
+    public String getType()
+    {
+        return "type1";
+    }
+
+    public int getDetail1()
+    {
+        return 100;
+    }
+    
+}
+
+class type2 implements Object
+{
+    public void performAction()
+    {
+        System.out.println("read...");
+    }
+    public void haltAction()
+    {
+        System.out.println("don't read...");
+    }
+    public int getAttribute()
+    {
+        return 20;
+
+    }
+
+    public String getType()
+    {
+        return "type2";
+    }
+
+    public int getDetail2()
+    {
+        return 200;
+    }
+
+}
+
+class type3 implements Object
+{
+    public void performAction()
+    {
+        System.out.println("sleep...");
+    }
+    public void haltAction()
+    {
+        System.out.println("wake up...");
+    }
+    public int getAttribute()
+    {
+        return 30;
+
+    }
+
+    public String getType()
+    {
+        return "type3";
+    }
+
+    public int getDetail3()
+    {
+        return 300;
+    }
+}
+
+public class Question2 {
+
+    public static void main(String[] args) {
+        
+        List<Object> objects = new ArrayList<>();
+
+        objects.add(new type1());
+        objects.add(new type2());
+        objects.add(new type3());
+
+        for(Object object : objects)
+        {
+            System.out.println();
+            object.performAction();
+
+            System.out.println("Attribute : " +object.getAttribute());
+            System.out.println("Type : "+object.getType());
+
+            if (object instanceof type1) {
+                int result = ((type1)object).getDetail1();
+                System.out.println("Detail from type1 is : " +result);
+            }
+
+            else if (object instanceof type2) {
+                int result = ((type2)object).getDetail2();
+                System.out.println("Detail from the type2 is : " +result);
+            }
+
+            else if (object instanceof type3) {
+                int result = ((type3)object).getDetail3();
+                System.out.println("Detail from the type3 is : " +result);
+            }
+        }
+        System.out.println();
+    }
+}

@@ -1,0 +1,162 @@
+public class CurrencyConversionService {
+
+// adding an attributes and aggregating other classes
+    
+    private ExchangeRateService rateService;
+    private AuditService auditService;
+    private static final double DEFAULT_EXCHANGE_RATE = 1.0;
+
+// adding constructor
+    
+    public CurrencyConversionService(ExchangeRateService rateService, AuditService auditService) {
+        this.rateService = rateService;
+        this.auditService = auditService;
+    }
+
+    // Converts currency using exchange rate and logs the transaction
+
+    public double convert(String fromCurrency, String toCurrency, double amount) throws Exception {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        
+        if (!isValidCurrency(fromCurrency) || !isValidCurrency(toCurrency)) {
+            throw new IllegalArgumentException("Invalid currency code");
+        }
+
+        double exchangeRate = getExchangeRate(fromCurrency, toCurrency);
+        double convertedAmount = amount * exchangeRate;
+
+        auditService.logTransaction(fromCurrency, toCurrency, amount, exchangeRate);
+        
+        return convertedAmount;
+    }
+
+    // Fetches the exchange rate from external service or fallback
+
+    private double getExchangeRate(String fromCurrency, String toCurrency) {
+        try {
+            return rateService.getExchangeRate(fromCurrency, toCurrency);
+        } catch (Exception e) {
+            // Fallback to default exchange rate if external service fails
+            auditService.logWarning("External service unavailable, using default exchange rate.");
+            return DEFAULT_EXCHANGE_RATE;
+        }
+    }
+
+    // Validates if the currency code is valid (e.g., 3-letter code like USD, EUR)
+
+    private boolean isValidCurrency(String currency) {
+        return currency != null && currency.matches("^[A-Z]{3}$");
+    }
+}
+
+
+
+
+public class AuditService {
+
+    // Logs transaction details (including timestamp, from and to currency, amount, and exchange rate)
+
+    public void logTransaction(String fromCurrency, String toCurrency, double amount, double exchangeRate) {
+        System.out.println("Transaction logged: " + fromCurrency + " -> " + toCurrency + ", Amount: " + amount + ", Rate: " + exchangeRate);
+    }
+
+    // Logs warnings such as when external services are unavailable
+
+    public void logWarning(String message) {
+        System.out.println("Warning: " + message);
+    }
+}
+
+
+
+public class ExchangeRateService {
+
+    // Simulates fetching exchange rates from an external service
+
+    public double getExchangeRate(String fromCurrency, String toCurrency) throws Exception {
+        if (fromCurrency.equals("USD") && toCurrency.equals("EUR")) {
+            return 0.85;
+        } else {
+            throw new Exception("Service unavailable");
+        }
+    }
+}
+
+
+
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.*;
+
+public class CurrencyConversionServiceTest {
+
+    @Mock
+    private ExchangeRateService mockRateService;
+    
+    @Mock
+    private AuditService mockAuditService;
+    
+    private CurrencyConversionService service;
+
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+        service = new CurrencyConversionService(mockRateService, mockAuditService);
+    }
+
+    @Test
+    public void testValidTransaction() throws Exception {
+        when(mockRateService.getExchangeRate("USD", "EUR")).thenReturn(0.85);
+        
+        double result = service.convert("USD", "EUR", 100);
+        
+        assertEquals(85.0, result, 0.01); // Assert correct conversion
+        verify(mockAuditService).logTransaction("USD", "EUR", 100, 0.85); // Verify audit log
+    }
+
+    @Test
+    public void testInvalidAmount() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            service.convert("USD", "EUR", 0);
+        });
+        assertEquals("Amount must be positive", exception.getMessage());
+        
+        verify(mockAuditService, times(0)).logTransaction(anyString(), anyString(), anyDouble(), anyDouble());
+    }
+
+    @Test
+    public void testInvalidCurrencyCode() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            service.convert("USD", "XYZ", 100);
+        });
+        assertEquals("Invalid currency code", exception.getMessage());
+        
+        verify(mockAuditService, times(0)).logTransaction(anyString(), anyString(), anyDouble(), anyDouble());
+    }
+
+    @Test
+    public void testExternalServiceUnavailable() throws Exception {
+        when(mockRateService.getExchangeRate("USD", "EUR")).thenThrow(new Exception("Service unavailable"));
+        
+        double result = service.convert("USD", "EUR", 100);
+        
+        assertEquals(100.0, result, 0.01); // Default rate used
+        verify(mockAuditService).logWarning("External service unavailable, using default exchange rate.");
+    }
+
+    @Test
+    public void testTransactionAuditLogging() throws Exception {
+        when(mockRateService.getExchangeRate("USD", "EUR")).thenReturn(0.85);
+        
+        service.convert("USD", "EUR", 100);
+        
+        verify(mockAuditService).logTransaction(eq("USD"), eq("EUR"), eq(100.0), eq(0.85));
+    }
+}
+
+

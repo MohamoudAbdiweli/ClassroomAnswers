@@ -1,0 +1,132 @@
+
+abstract class lecturer
+{
+    String name;
+    String gender;
+    int age;
+
+    public lecturer(String name, String gender, int age)
+    {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+
+    abstract void walk();
+    abstract void run();
+    abstract void sleep();
+
+    public void display()
+    {
+        System.out.println("Name of the lecturer is "+name);
+        System.out.println("gender of the lecturer is "+gender);
+        System.out.println("age of the lecturer is "+age);
+    }
+}
+
+class concrete1 extends  lecturer
+{
+    int id;
+    public concrete1(String name, String gender, int age, int id)
+    {
+        super(name,gender,age);
+        this.id = id;
+    }
+
+    public void walk()
+    {
+        System.out.println("walking...");
+    }
+
+    public void run()
+    {
+        System.out.println("running...");
+    }
+
+    public void sleep()
+    {
+        System.out.println("sleeping...");
+    }
+}
+
+class concrete2 extends lecturer
+{
+    double tel;
+
+    concrete2(String name, String gender, int age, double tel)
+    {
+        super(name,gender,age);
+            this.tel = tel;
+    }
+
+    public void walk()
+    {
+        System.out.println("don't walk...");
+    }
+
+    public void run()
+    {
+        System.out.println("don't run...");
+    }
+
+    public void sleep()
+    {
+        System.out.println("don't sleep...");
+    }
+}
+
+class concrete3 extends lecturer
+{
+    String address;
+    concrete3(String name, String gender, int age, String address)
+    {
+        super(name, gender, age);
+        this.address = address;
+    }
+
+    public void walk()
+    {
+        System.out.println("You shall be walk...");
+    }
+
+    public void run()
+    {
+        System.out.println("you shall be run...");
+    }
+
+    public void sleep()
+    {
+        System.out.println("you shall be sleep...");
+    }
+}
+
+public class Question1
+{
+
+    public static void main(String[] args) {
+        
+        System.out.println();
+        concrete1 c1 = new concrete1("ali", "male", 20, 1);
+        c1.display();
+        System.out.println("Method of the first concrete class :");
+        c1.walk();
+        c1.run();
+        c1.sleep();
+        System.out.println();
+        concrete2 c2 = new concrete2("alice", "male", 15, 078965.000);
+        c2.display();
+        System.out.println("Methods of the second concrete class : ");
+        c2.walk();
+        c2.run();
+        c2.sleep();
+        System.out.println();
+        concrete3 c3 = new concrete3("aisha", "female", 30, "kampala");
+        c3.display();
+        System.out.println("Methods of the third concrete class : ");
+        c3.walk();
+        c3.run();
+        c3.sleep();
+        System.out.println();
+
+    }
+}

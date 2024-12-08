@@ -1,0 +1,38 @@
+package Question1;
+
+public class IIB {
+
+    int uniqueAge = 0;
+    String name;
+
+    {
+        uniqueAge++;
+    }
+
+    public IIB(String name) {
+        this.name = name;
+
+    }
+
+    public int getUniqueAge() {
+        return this.uniqueAge;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public static void main(String[] args) {
+        IIB q1 = new IIB("John");
+        System.out.println(q1.getUniqueAge());
+        System.out.println(q1.getName());
+
+        IIB q2 = new IIB("James");
+        System.out.println(q2.getUniqueAge());
+        System.out.println(q2.getName());
+
+        IIB q3 = new IIB("doe");
+        System.out.println(q3.getUniqueAge());
+        System.out.println(q3.getName());
+    }
+}

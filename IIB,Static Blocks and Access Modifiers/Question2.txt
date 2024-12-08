@@ -1,0 +1,48 @@
+package Question2;
+
+public class SIB {
+
+    static  int id;
+    static String name;
+
+    int age;
+    String gender;
+
+    static {
+        id = 20;
+        name = "John";
+
+        System.out.println("Static Initialization Block : " +name + " , " + id);
+    }
+
+
+    public SIB()
+    {
+        age = 30;
+        gender = "Male";
+
+    }
+
+    public void hello()
+    {
+        System.out.println(" Instance Initialization Block : " +gender + " , " + age);
+    }
+
+    public static void main(String[] args) {
+
+        SIB q1 = new SIB();
+
+        q1.hello();
+
+        SIB q2 = new SIB();
+
+        q2.hello();
+
+
+        SIB q3 = new SIB();
+
+        q3.hello();
+
+
+    }
+}
